@@ -62,10 +62,21 @@ export default function App() {
       </NavBar>
 
       <Main>
+        {/* use elements as a prop
+        <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList watched={watched} />
+            </>
+          }
+        /> */}
+
+        {/* use children prop */}
         <Box>
           <MovieList movies={movies} />
         </Box>
-        {/* <WatchedBox /> */}
 
         <Box>
           <WatchedSummary watched={watched} />
@@ -120,6 +131,7 @@ const Main = ({ children }) => {
   return <main className="main">{children}</main>;
 };
 
+//  use elements as a prop
 const Box = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   return (
@@ -131,6 +143,21 @@ const Box = ({ children }) => {
     </div>
   );
 };
+
+/*
+//  use elements as a prop
+const Box = ({ element }) => {
+  const [isOpen, setIsOpen] = useState(true);
+  return (
+    <div className="box">
+      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
+        {isOpen ? '–' : '+'}
+      </button>
+      {isOpen && element}
+    </div>
+  );
+};
+*/
 
 /*
 const WatchedBox = () => {
